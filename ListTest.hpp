@@ -482,7 +482,6 @@ bool mycomparison (double first, double second)
 template <class list>
 void merge1(std::stringstream& out)
 {
-
     list first, second;
 
     first.push_back(1.4);
@@ -498,6 +497,65 @@ void merge1(std::stringstream& out)
     printIter(out, first);
     keyval(out, "size", second.size());
     printIter(out, second);
+}
+
+template <class list>
+void reverse(std::stringstream& out)
+{
+    list lst(range, range + 5);
+    lst.reverse();
+    keyval(out, "size", lst.size());
+    printIter(out, lst);
+
+    lst.push_back(-1);
+    lst.reverse();
+    keyval(out, "size", lst.size());
+    printIter(out, lst);
+}
+
+template <class list>
+void sort0(std::stringstream& out)
+{
+    list lst;
+    lst.sort();
+
+    lst.push_back(5);
+    lst.push_back(4);
+    lst.push_back(3);
+    lst.push_back(2);
+    lst.push_back(1);
+    lst.push_back(2);
+    lst.push_back(3);
+    lst.push_back(4);
+    lst.push_back(5);
+    lst.sort();
+    keyval(out, "size", lst.size());
+    printIter(out, lst);
+}
+
+bool isLess(const int& v1, const int& v2)
+{
+    return v1 < v2;
+}
+
+template <class list>
+void sort1(std::stringstream& out)
+{
+    list lst;
+
+    lst.push_back(5);
+    lst.push_back(4);
+    lst.push_back(3);
+    lst.push_back(2);
+    lst.push_back(1);
+    lst.push_back(2);
+    lst.push_back(3);
+    lst.push_back(4);
+    lst.push_back(5);
+    lst.sort(isLess);
+
+    keyval(out, "size", lst.size());
+    printIter(out, lst);
 }
 
 }

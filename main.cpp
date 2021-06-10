@@ -55,6 +55,9 @@ void testList(CompareTester& ct)
     LIST_TEST(unique0);
     LIST_TEST(unique1);
     LIST_TEST(merge0);
+    LIST_TEST(reverse);
+    LIST_TEST(sort0);
+    LIST_TEST(sort1);
 }
 
 void testListDouble(CompareTester& ct)
