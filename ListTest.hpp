@@ -558,5 +558,23 @@ void sort1(std::stringstream& out)
     printIter(out, lst);
 }
 
+template <class list>
+void relationOperation(std::stringstream& out)
+{
+    list a;
+    a.push_back(10); a.push_back(20); a.push_back(30);
+    list b;
+    b.push_back(10); b.push_back(20); b.push_back(30);
+    list c;
+    c.push_back(30); c.push_back(20); c.push_back(10);
+
+    if (a==b) out << "a and b are equal, ";
+    if (b!=c) out << "b and c are not equal, ";
+    if (b<c) out << "b is less than c, ";
+    if (c>b) out << "c is greater than b, ";
+    if (a<=b) out << "a is less than or equal to b, ";
+    if (a>=b) out << "a is greater than or equal to b, ";
+}
+
 }
 #endif // LISTTESTER_HPP

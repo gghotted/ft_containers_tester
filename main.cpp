@@ -58,6 +58,8 @@ void testList(CompareTester& ct)
     LIST_TEST(reverse);
     LIST_TEST(sort0);
     LIST_TEST(sort1);
+
+    LIST_TEST(relationOperation);
 }
 
 void testListDouble(CompareTester& ct)
