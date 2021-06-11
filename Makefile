@@ -1,5 +1,5 @@
-PATH = ../ft_containers
-INCLUDES = -I$(PATH)/containers -I$(PATH)/utils
+ROOT = ../ft_containers
+INCLUDES = -I$(ROOT)/containers -I$(ROOT)/utils
 
 CXX = clang++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 $(INCLUDES) $(ADDFLAGS)
