@@ -2,54 +2,13 @@
 #define LISTTESTER_HPP
 
 #include <sstream>
+#include "Util.hpp"
 
 #define LIST_TEST(FNC) ct.run("list::" #FNC, "STD", "FT ", \
                               list_test::FNC<STD>, list_test::FNC<FT>)
 
 namespace list_test
 {
-
-const int range[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-const int nrange[] = {0, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10};
-
-template <class Out, class Key, class Val>
-void keyval(Out& out, Key key, Val val)
-{
-    out << "[ " << key << ":" << val << " ] ";
-}
-
-template <class Out, class Iterable>
-void printIter(Out& out, Iterable& iterable)
-{
-    typename Iterable::const_iterator it = iterable.begin();
-    typename Iterable::const_iterator ite = iterable.end();
-    for (; it != ite; ++it)
-        out << *it << ' ';
-}
-
-template <class Out, class Iterator>
-void printIter(Out& out, Iterator it, Iterator ite)
-{
-    for (; it != ite; ++it)
-        out << *it << ' ';
-}
-
-template <int start, int end>
-bool inRange(const int& val)
-{
-    return (start <= val && val <= end);
-}
-
-template <class Tp>
-bool isSame(const Tp& v1, const Tp& v2)
-{
-    return v1 == v2;
-}
-
-int compABS(int v1, int v2)
-{
-    return std::abs(v1) < std::abs(v2);
-}
 
 /* constructor */
 template <class list>

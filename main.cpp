@@ -1,12 +1,15 @@
 /* containers */
 #include "list.hpp"
+#include "vector.hpp"
 /* containers */
 
 #include "CompareTester.hpp"
 #include "ListTest.hpp"
+#include "VectorTest.hpp"
 
 #include <iostream>
 #include <list>
+#include <vector>
 
 void testList(CompareTester& ct)
 {
@@ -70,13 +73,24 @@ void testListDouble(CompareTester& ct)
     LIST_TEST(merge1);
 }
 
+void testVector(CompareTester& ct)
+{
+    typedef std::vector<int>  STD;
+    typedef ft::vector<int>   FT;
+
+    VECTOR_TEST(constructor0);
+    VECTOR_TEST(constructor1);
+}
+
 int main()
 {
     CompareTester ct;
     ct.setPrintOnPass(true);
 
-    testList(ct);
-    testListDouble(ct);
+    // testList(ct);
+    // testListDouble(ct);
+    testVector(ct);
+
     ct.printTotalScore();
     system("leaks ft_containers");
 }
