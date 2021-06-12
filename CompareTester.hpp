@@ -38,7 +38,8 @@ class CompareTester
             lhs(lhsResult);
             rhs(rhsResult);
             if (lhsResult.str().compare(rhsResult.str()) == 0 ||
-                lhsResult.str().find(DontNeedToSame) == 0)
+                (lhsResult.str().find(DontNeedToSame) == 0 &&
+                 rhsResult.str().find(DontNeedToSame) == 0))
                 pass(lhsName, rhsName);
             else
                 fail(lhsName, rhsName);

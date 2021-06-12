@@ -78,8 +78,45 @@ void testVector(CompareTester& ct)
     typedef std::vector<int>  STD;
     typedef ft::vector<int>   FT;
 
+    /* constructor */
     VECTOR_TEST(constructor0);
     VECTOR_TEST(constructor1);
+    VECTOR_TEST(constructor2);
+    VECTOR_TEST(copyConstructor);
+
+    /* operator */
+    VECTOR_TEST(assignation);
+
+    /* iterator */
+    VECTOR_TEST(begin_end);
+    VECTOR_TEST(rbegin_rend);
+
+    /* capacity */
+    VECTOR_TEST(size_capacity);
+    VECTOR_TEST(max_size);
+    VECTOR_TEST(resize);
+    VECTOR_TEST(empty);
+    VECTOR_TEST(reserve);
+    VECTOR_TEST(reserveExcept);
+
+    /* element access */
+    VECTOR_TEST(accessOperator);
+    VECTOR_TEST(at);
+    VECTOR_TEST(atExcept);
+    VECTOR_TEST(front_back);
+
+    /* modifiers */
+    VECTOR_TEST(assign0);
+    VECTOR_TEST(assign1);
+    VECTOR_TEST(push_back);
+    VECTOR_TEST(pop_back);
+    VECTOR_TEST(insert0);
+    VECTOR_TEST(insert1);
+    VECTOR_TEST(insert2);
+    VECTOR_TEST(erase0);
+    VECTOR_TEST(erase1);
+    VECTOR_TEST(swap);
+    VECTOR_TEST(clear);
 }
 
 int main()
