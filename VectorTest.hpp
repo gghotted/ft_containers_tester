@@ -329,7 +329,10 @@ void insert0(std::stringstream &out)
 
     it = v.insert(v.begin(), 4);
     out << *it;
+    info(out, v);
 
+    v.assign(4, 3);
+    v.insert(v.begin(), 1);
     info(out, v);
 }
 
