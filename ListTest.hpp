@@ -518,21 +518,54 @@ void sort1(std::stringstream& out)
 }
 
 template <class list>
+void nonMemberSwap(std::stringstream& out)
+{
+    list a(range, range + 5);
+    list b(range + 5, range + 10);
+    swap(a, b);
+
+    keyval(out, "size", a.size());
+    printIter(out, a);
+
+    keyval(out, "size", b.size());
+    printIter(out, b);
+}
+
+template <class list>
+static void printRelation(std::stringstream& out, const list& a, const list& b)
+{
+    if (a == b) out << "(a == b)";
+    if (a != b) out << "(a != b)";
+    if (a <= b) out << "(a <= b)";
+    if (a >= b) out << "(a >= b)";
+    if (a < b) out << "(a < b)";
+    if (a > b) out << "(a > b)";
+}
+
+template <class list>
 void relationOperation(std::stringstream& out)
 {
-    list a;
-    a.push_back(10); a.push_back(20); a.push_back(30);
-    list b;
-    b.push_back(10); b.push_back(20); b.push_back(30);
-    list c;
-    c.push_back(30); c.push_back(20); c.push_back(10);
+    printRelation(out, list(), list());
+    printRelation(out, list(3), list(4));
+    printRelation(out, list(4), list(3));
+    printRelation(out, list(range, range + 2), list(range + 2, range + 4));
+}
 
-    if (a==b) out << "a and b are equal, ";
-    if (b!=c) out << "b and c are not equal, ";
-    if (b<c) out << "b is less than c, ";
-    if (c>b) out << "c is greater than b, ";
-    if (a<=b) out << "a is less than or equal to b, ";
-    if (a>=b) out << "a is greater than or equal to b, ";
+template <class Iter>
+static void printIteratorRelation(std::stringstream& out, const Iter& a, const Iter& b)
+{
+    if (a == b) out << "(a == b)";
+    if (a != b) out << "(a != b)";
+}
+
+template <class list>
+void iteratorRelationOperation(std::stringstream& out)
+{
+    list lst;
+    printIteratorRelation(out, lst.begin(), lst.end());
+
+    lst.assign(5, 1);
+    printIteratorRelation(out, lst.begin(), lst.end());
 }
 
 }

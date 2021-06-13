@@ -62,7 +62,10 @@ void testList(CompareTester& ct)
     LIST_TEST(sort0);
     LIST_TEST(sort1);
 
+    /* non member */
+    LIST_TEST(nonMemberSwap);
     LIST_TEST(relationOperation);
+    LIST_TEST(iteratorRelationOperation);
 }
 
 void testListDouble(CompareTester& ct)
@@ -124,10 +127,10 @@ int main()
     CompareTester ct;
     ct.setPrintOnPass(true);
 
-    // testList(ct);
+    testList(ct);
     // testListDouble(ct);
-    testVector(ct);
+    // testVector(ct);
 
     ct.printTotalScore();
-    system("leaks ft_containers");
+    // system("leaks ft_containers");
 }
