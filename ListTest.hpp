@@ -563,9 +563,11 @@ void iteratorRelationOperation(std::stringstream& out)
 {
     list lst;
     printIteratorRelation(out, lst.begin(), lst.end());
+    printIteratorRelation(out, lst.rbegin(), lst.rend());
 
     lst.assign(5, 1);
     printIteratorRelation(out, lst.begin(), lst.end());
+    printIteratorRelation(out, lst.rbegin(), lst.rend());
 }
 
 }
