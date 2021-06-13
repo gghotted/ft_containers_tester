@@ -120,6 +120,11 @@ void testVector(CompareTester& ct)
     VECTOR_TEST(erase1);
     VECTOR_TEST(swap);
     VECTOR_TEST(clear);
+
+    /* non member */
+    VECTOR_TEST(nonMemberSwap);
+    VECTOR_TEST(relationOperation);
+    VECTOR_TEST(iteratorRelationOperation);
 }
 
 int main()
@@ -127,9 +132,9 @@ int main()
     CompareTester ct;
     ct.setPrintOnPass(true);
 
-    testList(ct);
+    // testList(ct);
     // testListDouble(ct);
-    // testVector(ct);
+    testVector(ct);
 
     ct.printTotalScore();
     // system("leaks ft_containers");

@@ -414,6 +414,63 @@ void clear(std::stringstream &out)
     info(out, v);
 }
 
+template <class vector>
+void nonMemberSwap(std::stringstream& out)
+{
+    vector a(range, range + 5);
+    vector b(range + 5, range + 10);
+    swap(a, b);
+
+    info(out, a);
+    info(out, b);
+}
+
+template <class vector>
+static void printRelation(std::stringstream& out, const vector& a, const vector& b)
+{
+    if (a == b) out << "(a == b)";
+    if (a != b) out << "(a != b)";
+    if (a <= b) out << "(a <= b)";
+    if (a >= b) out << "(a >= b)";
+    if (a < b) out << "(a < b)";
+    if (a > b) out << "(a > b)";
+}
+
+template <class vector>
+void relationOperation(std::stringstream& out)
+{
+    printRelation(out, vector(), vector());
+    printRelation(out, vector(3), vector(4));
+    printRelation(out, vector(4), vector(3));
+    printRelation(out, vector(range, range + 2), vector(range + 2, range + 4));
+}
+
+template <class Iter>
+static void printIteratorRelation(std::stringstream& out, const Iter& a, const Iter& b)
+{
+    if (a == b) out << "(a == b)";
+    if (a != b) out << "(a != b)";
+    if (a <= b) out << "(a <= b)";
+    if (a >= b) out << "(a >= b)";
+    if (a < b) out << "(a < b)";
+    if (a > b) out << "(a > b)";
+}
+
+template <class vector>
+void iteratorRelationOperation(std::stringstream& out)
+{
+    vector v;
+    printIteratorRelation(out, v.begin(), v.end());
+    printIteratorRelation(out, v.rbegin(), v.rend());
+
+    v.assign(5, 1);
+    printIteratorRelation(out, v.begin(), v.end());
+    printIteratorRelation(out, v.rbegin(), v.rend());
+
+    printIteratorRelation(out, v.end(), v.begin());
+    printIteratorRelation(out, v.rend(), v.rbegin());
+}
+
 }
 
 #endif // VECTORTEST_HPP
