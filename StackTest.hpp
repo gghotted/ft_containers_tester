@@ -3,7 +3,6 @@
 
 #include <sstream>
 #include "Util.hpp"
-#include "vector.hpp"
 
 #define STACK_TEST(FNC) ct.run("stack::" #FNC, "STD", "FT ", \
                                stack_test::FNC<STD>, stack_test::FNC<FT>)
@@ -98,10 +97,10 @@ void relationOperation(std::stringstream& out)
 {
     typedef typename stack::container_type container;
 
-    printRelation(out, container(), container());
-    printRelation(out, container(3), container(4));
-    printRelation(out, container(4), container(3));
-    printRelation(out, container(range, range + 2), container(range + 2, range + 4));
+    printRelation(out, stack(container()), stack(container()));
+    printRelation(out, stack(container(3)), stack(container(4)));
+    printRelation(out, stack(container(4)), stack(container(3)));
+    printRelation(out, stack(container(range, range + 2)), stack(container(range + 2, range + 4)));
 }
 
 }

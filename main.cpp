@@ -2,17 +2,20 @@
 #include "list.hpp"
 #include "vector.hpp"
 #include "stack.hpp"
+#include "queue.hpp"
 /* containers */
 
 #include "CompareTester.hpp"
 #include "ListTest.hpp"
 #include "VectorTest.hpp"
 #include "StackTest.hpp"
+#include "QueueTest.hpp"
 
 #include <iostream>
 #include <list>
 #include <vector>
 #include <stack>
+#include <queue>
 
 void testList(CompareTester& ct)
 {
@@ -143,6 +146,19 @@ void testStack(CompareTester& ct)
     STACK_TEST(relationOperation);
 }
 
+void testQueue(CompareTester& ct)
+{
+    typedef std::queue<int> STD;
+    typedef ft::queue<int>  FT;
+
+    QUEUE_TEST(constructor);
+    QUEUE_TEST(copyConstructor);
+    QUEUE_TEST(assignation);
+    QUEUE_TEST(capacity);
+    QUEUE_TEST(push_pop);
+    QUEUE_TEST(relationOperation);
+}
+
 int main()
 {
     CompareTester ct;
@@ -151,7 +167,8 @@ int main()
     // testList(ct);
     // testListDouble(ct);
     // testVector(ct);
-    testStack(ct);
+    // testStack(ct);
+    testQueue(ct);
 
     ct.printTotalScore();
     // system("leaks ft_containers");
