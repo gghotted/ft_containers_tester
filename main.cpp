@@ -1,15 +1,18 @@
 /* containers */
 #include "list.hpp"
 #include "vector.hpp"
+#include "stack.hpp"
 /* containers */
 
 #include "CompareTester.hpp"
 #include "ListTest.hpp"
 #include "VectorTest.hpp"
+#include "StackTest.hpp"
 
 #include <iostream>
 #include <list>
 #include <vector>
+#include <stack>
 
 void testList(CompareTester& ct)
 {
@@ -127,6 +130,19 @@ void testVector(CompareTester& ct)
     VECTOR_TEST(iteratorRelationOperation);
 }
 
+void testStack(CompareTester& ct)
+{
+    typedef std::stack<int> STD;
+    typedef ft::stack<int>  FT;
+
+    STACK_TEST(constructor);
+    STACK_TEST(copyConstructor);
+    STACK_TEST(assignation);
+    STACK_TEST(capacity);
+    STACK_TEST(push_pop);
+    STACK_TEST(relationOperation);
+}
+
 int main()
 {
     CompareTester ct;
@@ -134,7 +150,8 @@ int main()
 
     // testList(ct);
     // testListDouble(ct);
-    testVector(ct);
+    // testVector(ct);
+    testStack(ct);
 
     ct.printTotalScore();
     // system("leaks ft_containers");
