@@ -3,6 +3,7 @@
 #include "vector.hpp"
 #include "stack.hpp"
 #include "queue.hpp"
+#include "map.hpp"
 /* containers */
 
 #include "CompareTester.hpp"
@@ -10,12 +11,14 @@
 #include "VectorTest.hpp"
 #include "StackTest.hpp"
 #include "QueueTest.hpp"
+#include "MapTest.hpp"
 
 #include <iostream>
 #include <list>
 #include <vector>
 #include <stack>
 #include <queue>
+#include <map>
 
 void testList(CompareTester& ct)
 {
@@ -159,6 +162,63 @@ void testQueue(CompareTester& ct)
     QUEUE_TEST(relationOperation);
 }
 
+void testMap(CompareTester& ct)
+{
+    typedef std::map<int, int>  STD;
+    typedef ft::map<int, int>   FT;
+
+    /* constructor */
+    MAP_TEST(constructor0);
+    // MAP_TEST(constructor1);
+    // MAP_TEST(constructor2);
+    // MAP_TEST(copyConstructor);
+
+    // /* operator */
+    // MAP_TEST(assignation);
+
+    // /* iterator */
+    // MAP_TEST(begin_end);
+    // MAP_TEST(rbegin_rend);
+
+    // /* capacity */
+    // MAP_TEST(empty);
+    // MAP_TEST(max_size);
+
+    // /* modifiers */
+    // MAP_TEST(assign0);
+    // MAP_TEST(assign1);
+    // MAP_TEST(push_front);
+    // MAP_TEST(pop_front);
+    // MAP_TEST(push_back);
+    // MAP_TEST(pop_back);
+    // MAP_TEST(insert0);
+    // MAP_TEST(insert1);
+    // MAP_TEST(insert2);
+    // MAP_TEST(erase0);
+    // MAP_TEST(erase1);
+    // MAP_TEST(swap);
+    // MAP_TEST(resize);
+    // MAP_TEST(clear);
+
+    // /* operations */
+    // MAP_TEST(splice0);
+    // MAP_TEST(splice1);
+    // MAP_TEST(splice2);
+    // MAP_TEST(remove);
+    // MAP_TEST(remove_if);
+    // MAP_TEST(unique0);
+    // MAP_TEST(unique1);
+    // MAP_TEST(merge0);
+    // MAP_TEST(reverse);
+    // MAP_TEST(sort0);
+    // MAP_TEST(sort1);
+
+    // /* non member */
+    // MAP_TEST(nonMemberSwap);
+    // MAP_TEST(relationOperation);
+    // MAP_TEST(iteratorRelationOperation);
+}
+
 int main()
 {
     CompareTester ct;
@@ -168,7 +228,8 @@ int main()
     // testListDouble(ct);
     // testVector(ct);
     // testStack(ct);
-    testQueue(ct);
+    // testQueue(ct);
+    testMap(ct);
 
     ct.printTotalScore();
     // system("leaks ft_containers");
