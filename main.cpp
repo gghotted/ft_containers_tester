@@ -12,6 +12,7 @@
 #include "StackTest.hpp"
 #include "QueueTest.hpp"
 #include "MapTest.hpp"
+#include "Util.hpp"
 
 #include <iostream>
 #include <list>
@@ -169,20 +170,23 @@ void testMap(CompareTester& ct)
 
     /* constructor */
     MAP_TEST(constructor0);
-    // MAP_TEST(constructor1);
-    // MAP_TEST(constructor2);
-    // MAP_TEST(copyConstructor);
+    MAP_TEST(constructor1);
+    MAP_TEST(copyConstructor);
 
     // /* operator */
-    // MAP_TEST(assignation);
+    MAP_TEST(assignation);
 
     // /* iterator */
-    // MAP_TEST(begin_end);
-    // MAP_TEST(rbegin_rend);
+    MAP_TEST(begin_end);
+    MAP_TEST(rbegin_rend);
 
     // /* capacity */
-    // MAP_TEST(empty);
-    // MAP_TEST(max_size);
+    MAP_TEST(empty);
+    MAP_TEST(size);
+    MAP_TEST(max_size);
+
+    /* element access */
+    MAP_TEST(accessOperator);
 
     // /* modifiers */
     // MAP_TEST(assign0);
@@ -191,27 +195,17 @@ void testMap(CompareTester& ct)
     // MAP_TEST(pop_front);
     // MAP_TEST(push_back);
     // MAP_TEST(pop_back);
-    // MAP_TEST(insert0);
+    MAP_TEST(insert0);
     // MAP_TEST(insert1);
     // MAP_TEST(insert2);
-    // MAP_TEST(erase0);
+    MAP_TEST(erase0);
     // MAP_TEST(erase1);
     // MAP_TEST(swap);
     // MAP_TEST(resize);
     // MAP_TEST(clear);
 
     // /* operations */
-    // MAP_TEST(splice0);
-    // MAP_TEST(splice1);
-    // MAP_TEST(splice2);
-    // MAP_TEST(remove);
-    // MAP_TEST(remove_if);
-    // MAP_TEST(unique0);
-    // MAP_TEST(unique1);
-    // MAP_TEST(merge0);
-    // MAP_TEST(reverse);
-    // MAP_TEST(sort0);
-    // MAP_TEST(sort1);
+    MAP_TEST(find);
 
     // /* non member */
     // MAP_TEST(nonMemberSwap);
@@ -221,6 +215,7 @@ void testMap(CompareTester& ct)
 
 int main()
 {
+    srand(time(0));
     CompareTester ct;
     ct.setPrintOnPass(true);
 
