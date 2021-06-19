@@ -194,6 +194,32 @@ void insert0(std::stringstream &out)
     info(out, m);
 }
 
+template <class map>
+void insert1(std::stringstream &out)
+{
+    typedef typename map::value_type make_pair;
+
+    map m;
+    m.insert(m.end(), make_pair(1, 1));
+    typename map::iterator it = m.insert(m.end(), make_pair(2, 2));
+    info(out, m);
+    printPair(out, *it);
+}
+
+template <class map>
+void insert2(std::stringstream &out)
+{
+    typedef typename map::value_type make_pair;
+
+    map m;
+    for (size_t i = 0; i < 10; i++)
+        m.insert(make_pair(range[i], range[i]));
+
+    map m2;
+    m2.insert(m.begin(), m.end());
+    info(out, m2);
+}
+
 /*
 1
  2
@@ -224,23 +250,58 @@ void erase0(std::stringstream& out)
  2 4
 1   5
 */
-// template <class map>
-// void erase1(std::stringstream& out)
-// {
-//     typedef typename map::value_type make_pair;
+template <class map>
+void erase0_0(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
 
-//     map m;
-//     m.insert(make_pair(3, 3));
-//     m.insert(make_pair(2, 2));
-//     m.insert(make_pair(1, 1));
-//     m.insert(make_pair(4, 4));
-//     m.insert(make_pair(5, 5));
+    map m;
+    m.insert(make_pair(3, 3));
+    m.insert(make_pair(2, 2));
+    m.insert(make_pair(1, 1));
+    m.insert(make_pair(4, 4));
+    m.insert(make_pair(5, 5));
 
-//     m.erase(m.begin());
-//     m.erase(++m.begin());
-//     m.erase(--m.end());
-//     info(out, m);
-// }
+    m.erase(m.begin());
+    m.erase(++m.begin());
+    m.erase(--m.end());
+    info(out, m);
+}
+
+template <class map>
+void erase1(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
+
+    map m;
+    m.insert(make_pair(3, 3));
+    m.insert(make_pair(2, 2));
+    m.insert(make_pair(1, 1));
+    m.insert(make_pair(4, 4));
+    m.insert(make_pair(5, 5));
+
+    keyval(out, "erased", m.erase(1));
+    m.erase(3);
+    m.erase(5);
+    keyval(out, "erased", m.erase(6));
+    info(out, m);
+}
+
+template <class map>
+void erase2(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
+
+    map m;
+    m.insert(make_pair(3, 3));
+    m.insert(make_pair(2, 2));
+    m.insert(make_pair(1, 1));
+    m.insert(make_pair(4, 4));
+    m.insert(make_pair(5, 5));
+
+    m.erase(++m.begin(), m.end());
+    info(out, m);
+}
 
 /* operations */
 template <class map>
@@ -278,6 +339,84 @@ void find(std::stringstream& out)
 //     map m2(m.begin(), m.end());
 //     info(out, m2);
 // }
+
+template <class map>
+void lower_bound(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
+
+    map m;
+    m.insert(make_pair(50, 50));
+    m.insert(make_pair(20, 20));
+    m.insert(make_pair(10, 10));
+    m.insert(make_pair(30, 30));
+    m.insert(make_pair(80, 80));
+    m.insert(make_pair(70, 70));
+    m.insert(make_pair(90, 90));
+    m.insert(make_pair(75, 75));
+    m.insert(make_pair(29, 29));
+
+    const int test[] = {40, 25, 100, 70, 74, 0, 10, 29, 35, 78, 51};
+    for (int i = 0; i < 11; i++)
+    {
+        typename map::iterator it = m.lower_bound(test[i]);
+        if (it != m.end())
+            out << "[" << test[i] << " " << it->first << ":"<< it->second << "] ";
+    }
+}
+
+template <class map>
+void upper_bound(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
+
+    map m;
+    m.insert(make_pair(50, 50));
+    m.insert(make_pair(20, 20));
+    m.insert(make_pair(10, 10));
+    m.insert(make_pair(30, 30));
+    m.insert(make_pair(80, 80));
+    m.insert(make_pair(70, 70));
+    m.insert(make_pair(90, 90));
+    m.insert(make_pair(75, 75));
+    m.insert(make_pair(29, 29));
+
+    const int test[] = {40, 25, 100, 70, 74, 0, 10, 29, 35, 78, 51};
+    for (int i = 0; i < 11; i++)
+    {
+        typename map::iterator it = m.upper_bound(test[i]);
+        if (it != m.end())
+            out << "[" << test[i] << " " << it->first << ":"<< it->second << "] ";
+    }
+}
+
+template <class map>
+void equal_range(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
+
+    map m;
+    m.insert(make_pair(50, 50));
+    m.insert(make_pair(20, 20));
+    m.insert(make_pair(10, 10));
+    m.insert(make_pair(30, 30));
+    m.insert(make_pair(80, 80));
+    m.insert(make_pair(70, 70));
+    m.insert(make_pair(90, 90));
+    m.insert(make_pair(75, 75));
+    m.insert(make_pair(29, 29));
+
+    const int test[] = {40, 25, 100, 70, 74, 0, 10, 29, 35, 78, 51};
+    for (int i = 0; i < 11; i++)
+    {
+        typename map::iterator lower = m.equal_range(test[i]).first;
+        typename map::iterator upper = m.equal_range(test[i]).second;
+        if (lower != m.end())
+            out << "[" << test[i] << " " << lower->first << "]";
+        if (upper != m.end())
+            out << "[" << test[i] << " " << upper->first << "]";
+    }
+}
 
 }
 

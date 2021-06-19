@@ -196,16 +196,21 @@ void testMap(CompareTester& ct)
     // MAP_TEST(push_back);
     // MAP_TEST(pop_back);
     MAP_TEST(insert0);
-    // MAP_TEST(insert1);
-    // MAP_TEST(insert2);
+    MAP_TEST(insert1);
+    MAP_TEST(insert2);
     MAP_TEST(erase0);
-    // MAP_TEST(erase1);
+    MAP_TEST(erase0_0);
+    MAP_TEST(erase1);
+    MAP_TEST(erase2);
     // MAP_TEST(swap);
     // MAP_TEST(resize);
     // MAP_TEST(clear);
 
     // /* operations */
     MAP_TEST(find);
+    MAP_TEST(lower_bound);
+    MAP_TEST(upper_bound);
+    MAP_TEST(equal_range);
 
     // /* non member */
     // MAP_TEST(nonMemberSwap);
