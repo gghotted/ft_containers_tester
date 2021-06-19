@@ -11,6 +11,23 @@
 namespace map_test
 {
 
+template <class Iter>
+Iter next(Iter it, typename Iter::difference_type n = 1)
+{
+    for (typename Iter::difference_type i = 0; i < n; i++)
+        ++it;
+    return it;
+}
+
+ft::vector<int> getRandomRange(int size)
+{
+    srand(time(0));
+    ft::vector<int> v;
+    for (int i = 0; i < size; i++)
+        v.push_back(rand() % 1000);
+    return v;
+}
+
 template <class pair>
 void printPair(std::stringstream& out, const pair& pair_)
 {
@@ -304,24 +321,52 @@ void erase2(std::stringstream& out)
 }
 
 template <class map>
-void erase_tmp(std::stringstream& out)
+void swap(std::stringstream& out)
 {
     typedef typename map::value_type make_pair;
 
     map m;
-    m.insert(make_pair(10, 10));
-	m.insert(make_pair(8, 8));
-	m.insert(make_pair(9, 9));
-	m.insert(make_pair(3, 3));
-	m.insert(make_pair(15, 15));
-	m.insert(make_pair(14, 14));
-	m.insert(make_pair(16, 16));
-	m.insert(make_pair(12, 12));
-	m.insert(make_pair(13, 13));
-	m.insert(make_pair(18, 18));
+    m.insert(make_pair(3, 3));
+    m.insert(make_pair(2, 2));
+    m.insert(make_pair(1, 1));
+    m.insert(make_pair(4, 4));
+    m.insert(make_pair(5, 5));
 
-    m.erase(m.begin());
+    map m2;
+    m2.insert(make_pair(6, 6));
+    m2.insert(make_pair(7, 7));
+
+    m.swap(m2);
     info(out, m);
+    info(out, m2);
+}
+
+template <class map>
+void clear(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
+
+    map m;
+    m.clear();
+    info(out, m);
+
+    m.insert(make_pair(3, 3));
+    m.insert(make_pair(2, 2));
+    m.insert(make_pair(1, 1));
+    m.insert(make_pair(4, 4));
+    m.insert(make_pair(5, 5));
+    m.clear();
+    info(out, m);
+}
+
+/* observers */
+template <class map>
+void key_comp(std::stringstream& out)
+{
+    map m;
+
+    for (int i = 0; i < 10; i++)
+
 }
 
 /* operations */
@@ -336,10 +381,14 @@ void find(std::stringstream& out)
     m.insert(make_pair(1, 1));
     m.insert(make_pair(4, 4));
     m.insert(make_pair(5, 5));
-
     for (int i = 1; i <= 5; i++)
         printPair(out, *m.find(i));
     keyval(out, "is_end", m.find(6) == m.end());
+
+    const map cm(m);
+    for (int i = 1; i <= 5; i++)
+        printPair(out, *cm.find(i));
+    keyval(out, "is_end", cm.find(6) == cm.end());
 }
 
 // template <class T>
@@ -436,6 +485,22 @@ void equal_range(std::stringstream& out)
             out << "[" << test[i] << " " << lower->first << "]";
         if (upper != m.end())
             out << "[" << test[i] << " " << upper->first << "]";
+    }
+}
+
+template <class map>
+void erase_random_case(std::stringstream& out)
+{
+    static ft::vector<int> rrange = getRandomRange(10);
+    map m;
+    for (size_t i = 0; i < rrange.size(); i++)
+        m[rrange[i]] = rrange[i];
+
+    while (!m.empty())
+    {
+        typename map::iterator it = map_test::next(m.begin(), (rand() % m.size()));
+        m.erase(it);
+        info(out, m);
     }
 }
 

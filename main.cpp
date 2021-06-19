@@ -189,12 +189,6 @@ void testMap(CompareTester& ct)
     MAP_TEST(accessOperator);
 
     // /* modifiers */
-    // MAP_TEST(assign0);
-    // MAP_TEST(assign1);
-    // MAP_TEST(push_front);
-    // MAP_TEST(pop_front);
-    // MAP_TEST(push_back);
-    // MAP_TEST(pop_back);
     MAP_TEST(insert0);
     MAP_TEST(insert1);
     MAP_TEST(insert2);
@@ -202,10 +196,8 @@ void testMap(CompareTester& ct)
     MAP_TEST(erase0_0);
     MAP_TEST(erase1);
     MAP_TEST(erase2);
-    MAP_TEST(erase_tmp);
-    // MAP_TEST(swap);
-    // MAP_TEST(resize);
-    // MAP_TEST(clear);
+    MAP_TEST(swap);
+    MAP_TEST(clear);
 
     // /* operations */
     MAP_TEST(find);
@@ -217,6 +209,9 @@ void testMap(CompareTester& ct)
     // MAP_TEST(nonMemberSwap);
     // MAP_TEST(relationOperation);
     // MAP_TEST(iteratorRelationOperation);
+
+    /* random case */
+    MAP_TEST(erase_random_case);
 }
 
 int main()
