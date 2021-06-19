@@ -202,6 +202,7 @@ void testMap(CompareTester& ct)
     MAP_TEST(erase0_0);
     MAP_TEST(erase1);
     MAP_TEST(erase2);
+    MAP_TEST(erase_tmp);
     // MAP_TEST(swap);
     // MAP_TEST(resize);
     // MAP_TEST(clear);

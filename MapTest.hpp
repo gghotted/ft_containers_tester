@@ -303,6 +303,27 @@ void erase2(std::stringstream& out)
     info(out, m);
 }
 
+template <class map>
+void erase_tmp(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
+
+    map m;
+    m.insert(make_pair(10, 10));
+	m.insert(make_pair(8, 8));
+	m.insert(make_pair(9, 9));
+	m.insert(make_pair(3, 3));
+	m.insert(make_pair(15, 15));
+	m.insert(make_pair(14, 14));
+	m.insert(make_pair(16, 16));
+	m.insert(make_pair(12, 12));
+	m.insert(make_pair(13, 13));
+	m.insert(make_pair(18, 18));
+
+    m.erase(m.begin());
+    info(out, m);
+}
+
 /* operations */
 template <class map>
 void find(std::stringstream& out)
