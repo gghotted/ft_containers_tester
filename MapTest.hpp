@@ -365,8 +365,19 @@ void key_comp(std::stringstream& out)
 {
     map m;
 
-    for (int i = 0; i < 10; i++)
+    out << m.key_comp()(1, 2);
+    out << m.key_comp()(2, 1);
+}
 
+template <class map>
+void value_comp(std::stringstream& out)
+{
+    map m;
+
+    typename map::value_type v1(1, 2);
+    typename map::value_type v2(2, 1);
+    out << m.value_comp()(v1, v2);
+    out << m.value_comp()(v2, v1);
 }
 
 /* operations */
@@ -379,8 +390,8 @@ void find(std::stringstream& out)
     m.insert(make_pair(3, 3));
     m.insert(make_pair(2, 2));
     m.insert(make_pair(1, 1));
-    m.insert(make_pair(4, 4));
     m.insert(make_pair(5, 5));
+    m.insert(make_pair(4, 4));
     for (int i = 1; i <= 5; i++)
         printPair(out, *m.find(i));
     keyval(out, "is_end", m.find(6) == m.end());
@@ -391,24 +402,14 @@ void find(std::stringstream& out)
     keyval(out, "is_end", cm.find(6) == cm.end());
 }
 
-// template <class T>
-// struct greater{
-//     bool operator() (const T& x, const T& y) const {return x>y;}
-// };
+template <class map>
+void count(std::stringstream& out)
+{
+    map m;
 
-// template <class map>
-// void constructor_with_comp(std::stringstream& out)
-// {
-//     typedef typename map::value_type make_pair;
-
-//     map m(greater<typename map::key_type>);
-//     m.insert(make_pair(1, 1));
-//     m.insert(make_pair(2, 2));
-//     m.insert(make_pair(3, 3));
-
-//     map m2(m.begin(), m.end());
-//     info(out, m2);
-// }
+    m[1];
+    out << m.count(1) << m.count(2);
+}
 
 template <class map>
 void lower_bound(std::stringstream& out)
@@ -431,6 +432,14 @@ void lower_bound(std::stringstream& out)
     {
         typename map::iterator it = m.lower_bound(test[i]);
         if (it != m.end())
+            out << "[" << test[i] << " " << it->first << ":"<< it->second << "] ";
+    }
+
+    const map cm(m);
+    for (int i = 0; i < 11; i++)
+    {
+        typename map::const_iterator it = cm.lower_bound(test[i]);
+        if (it != cm.end())
             out << "[" << test[i] << " " << it->first << ":"<< it->second << "] ";
     }
 }
@@ -456,6 +465,14 @@ void upper_bound(std::stringstream& out)
     {
         typename map::iterator it = m.upper_bound(test[i]);
         if (it != m.end())
+            out << "[" << test[i] << " " << it->first << ":"<< it->second << "] ";
+    }
+
+    const map cm(m);
+    for (int i = 0; i < 11; i++)
+    {
+        typename map::const_iterator it = cm.lower_bound(test[i]);
+        if (it != cm.end())
             out << "[" << test[i] << " " << it->first << ":"<< it->second << "] ";
     }
 }
@@ -486,8 +503,82 @@ void equal_range(std::stringstream& out)
         if (upper != m.end())
             out << "[" << test[i] << " " << upper->first << "]";
     }
+
+    const map cm(m);
+    for (int i = 0; i < 11; i++)
+    {
+        typename map::const_iterator lower = cm.equal_range(test[i]).first;
+        typename map::const_iterator upper = cm.equal_range(test[i]).second;
+        if (lower != cm.end())
+            out << "[" << test[i] << " " << lower->first << "]";
+        if (upper != cm.end())
+            out << "[" << test[i] << " " << upper->first << "]";
+    }
 }
 
+/* non member */
+template <class map>
+void nonMemberSwap(std::stringstream& out)
+{
+    map a, b;
+    a[4] = 4;
+    b[2] = 2;
+
+    swap(a, b);
+    info(out, a);
+    info(out, b);
+}
+
+template <class map>
+static void printRelation(std::stringstream& out, const map& a, const map& b)
+{
+    if (a == b) out << "(a == b)";
+    if (a != b) out << "(a != b)";
+    if (a <= b) out << "(a <= b)";
+    if (a >= b) out << "(a >= b)";
+    if (a < b) out << "(a < b)";
+    if (a > b) out << "(a > b)";
+    out << " ";
+}
+
+template <class map>
+void relationOperation(std::stringstream& out)
+{
+    map m1, m2, m3, m4;
+    m2[4] = 4;
+    m2[2] = 3;
+
+    m3[4] = 4;
+    m3[2] = 4;
+
+    m4[1] = 1;
+    printRelation(out, m1, m1);
+    printRelation(out, m2, m3);
+    printRelation(out, m3, m2);
+    printRelation(out, m3, m2);
+    printRelation(out, m4, m3);
+}
+
+template <class Iter>
+static void printIteratorRelation(std::stringstream& out, const Iter& a, const Iter& b)
+{
+    if (a == b) out << "(a == b)";
+    if (a != b) out << "(a != b)";
+}
+
+template <class map>
+void iteratorRelationOperation(std::stringstream& out)
+{
+    map m;
+    printIteratorRelation(out, m.begin(), m.end());
+    printIteratorRelation(out, m.rbegin(), m.rend());
+
+    m[1] = 1;
+    printIteratorRelation(out, m.begin(), m.end());
+    printIteratorRelation(out, m.rbegin(), m.rend());
+}
+
+/* random case */
 template <class map>
 void erase_random_case(std::stringstream& out)
 {
@@ -502,6 +593,42 @@ void erase_random_case(std::stringstream& out)
         m.erase(it);
         info(out, m);
     }
+}
+
+template <class map>
+void insert_random_case0(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
+
+    static ft::vector<int> rrange = getRandomRange(10);
+    map m;
+    for (size_t i = 0; i < rrange.size(); i++)
+    {
+        if (i % 2)
+            keyval(out, "key", m.insert(make_pair(rrange[i], rrange[i])).first->first);
+        else
+            keyval(out, "success", m.insert(make_pair(rrange[i], rrange[i])).second);
+    }
+    info(out, m);
+}
+
+template <class map>
+void insert_random_case1(std::stringstream& out)
+{
+    typedef typename map::value_type make_pair;
+
+    static ft::vector<int> rrange = getRandomRange(10);
+    map m;
+    for (size_t i = 0; i < rrange.size(); i++)
+    {
+        typename map::iterator it;
+        if (i % 2)
+            it = map_test::next(m.begin(), (rand() % (m.size()+1) ));
+        else
+            it = m.upper_bound(rrange[i]);
+        m.insert(it, make_pair(rrange[i], rrange[i]));
+    }
+    info(out, m);
 }
 
 }

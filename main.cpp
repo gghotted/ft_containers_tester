@@ -199,19 +199,26 @@ void testMap(CompareTester& ct)
     MAP_TEST(swap);
     MAP_TEST(clear);
 
+    /* observer */
+    MAP_TEST(key_comp);
+    MAP_TEST(value_comp);
+
     // /* operations */
     MAP_TEST(find);
+    MAP_TEST(count);
     MAP_TEST(lower_bound);
     MAP_TEST(upper_bound);
     MAP_TEST(equal_range);
 
     // /* non member */
-    // MAP_TEST(nonMemberSwap);
-    // MAP_TEST(relationOperation);
-    // MAP_TEST(iteratorRelationOperation);
+    MAP_TEST(nonMemberSwap);
+    MAP_TEST(relationOperation);
+    MAP_TEST(iteratorRelationOperation);
 
     /* random case */
     MAP_TEST(erase_random_case);
+    MAP_TEST(insert_random_case0);
+    MAP_TEST(insert_random_case1);
 }
 
 int main()
