@@ -19,15 +19,6 @@ Iter next(Iter it, typename Iter::difference_type n = 1)
     return it;
 }
 
-ft::vector<int> getRandomRange(int size)
-{
-    srand(time(0));
-    ft::vector<int> v;
-    for (int i = 0; i < size; i++)
-        v.push_back(rand() % 1000);
-    return v;
-}
-
 template <class pair>
 void printPair(std::stringstream& out, const pair& pair_)
 {
@@ -582,7 +573,7 @@ void iteratorRelationOperation(std::stringstream& out)
 template <class map>
 void erase_random_case(std::stringstream& out)
 {
-    static ft::vector<int> rrange = getRandomRange(10);
+    static ft::vector<int> rrange = getRandomRange<ft::vector<int> >(10);
     map m;
     for (size_t i = 0; i < rrange.size(); i++)
         m[rrange[i]] = rrange[i];
@@ -600,7 +591,7 @@ void insert_random_case0(std::stringstream& out)
 {
     typedef typename map::value_type make_pair;
 
-    static ft::vector<int> rrange = getRandomRange(10);
+    static ft::vector<int> rrange = getRandomRange<ft::vector<int> >(10);
     map m;
     for (size_t i = 0; i < rrange.size(); i++)
     {
@@ -617,7 +608,7 @@ void insert_random_case1(std::stringstream& out)
 {
     typedef typename map::value_type make_pair;
 
-    static ft::vector<int> rrange = getRandomRange(10);
+    static ft::vector<int> rrange = getRandomRange<ft::vector<int> >(10);
     map m;
     for (size_t i = 0; i < rrange.size(); i++)
     {

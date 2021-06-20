@@ -2,6 +2,7 @@
 #define VECTORTEST_HPP
 
 #include <sstream>
+#include <list>
 #include "Util.hpp"
 
 #define VECTOR_TEST(FNC) ct.run("vector::" #FNC, "STD", "FT ", \
@@ -45,6 +46,10 @@ void constructor2(std::stringstream& out)
 {
     vector v(range, range + 10);
     info(out, v);
+
+    std::list<int> rrange = getRandomRange<std::list<int> >(10);
+    vector v2(rrange.begin(), rrange.end());
+    info(out, v2);
 }
 
 template <class vector>
@@ -282,6 +287,9 @@ void assign1(std::stringstream &out)
 
     v.assign(range, range);
     info(out, v);
+
+    std::list<int> rrange = getRandomRange<std::list<int> >(10);
+    v.assign(rrange.begin(), rrange.end());
 }
 
 template< class vector>
@@ -355,6 +363,10 @@ void insert2(std::stringstream &out)
 
     v.insert(v.end(), range, range + 5);
     v.insert(v.begin(), range + 5, range + 10);
+
+    std::list<int> rrange = getRandomRange<std::list<int> >(10);
+    v.insert(v.begin(), rrange.begin(), rrange.end());
+
     info(out, v);
 }
 

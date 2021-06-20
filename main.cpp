@@ -229,10 +229,10 @@ int main()
 
     // testList(ct);
     // testListDouble(ct);
-    // testVector(ct);
+    testVector(ct);
     // testStack(ct);
     // testQueue(ct);
-    testMap(ct);
+    // testMap(ct);
 
     ct.printTotalScore();
     // system("leaks ft_containers");

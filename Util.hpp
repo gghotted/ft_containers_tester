@@ -1,6 +1,8 @@
 #ifndef UTIL_HPP
 #define UTIL_HPP
 
+#include "vector.hpp"
+
 const int range[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 const int nrange[] = {0, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10};
 
@@ -36,6 +38,16 @@ template <class Tp>
 bool isSame(const Tp& v1, const Tp& v2)
 {
     return v1 == v2;
+}
+
+template <class Container>
+Container getRandomRange(int size)
+{
+    srand(time(0));
+    Container v;
+    for (int i = 0; i < size; i++)
+        v.push_back(rand() % 1000);
+    return v;
 }
 
 #endif // UTIL_HPP
