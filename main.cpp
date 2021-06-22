@@ -12,6 +12,7 @@
 #include "StackTest.hpp"
 #include "QueueTest.hpp"
 #include "MapTest.hpp"
+#include "IteratorRelationTest.hpp"
 #include "Util.hpp"
 
 #include <iostream>
@@ -221,6 +222,22 @@ void testMap(CompareTester& ct)
     MAP_TEST(insert_random_case1);
 }
 
+void testIteratorRelation(CompareTester& ct)
+{
+    typedef std::list<int> STD;
+    typedef ft::list<int>  FT;
+
+    ITER_REL(equal_const_nonConst);
+}
+
+void nonCompileCase()
+{
+    ft::list<int> lst;
+    const ft::list<int> clst;
+
+    std::cout << (lst.begin() == 1);
+}
+
 int main()
 {
     srand(time(0));
@@ -229,10 +246,11 @@ int main()
 
     // testList(ct);
     // testListDouble(ct);
-    testVector(ct);
+    // testVector(ct);
     // testStack(ct);
     // testQueue(ct);
     // testMap(ct);
+    testIteratorRelation(ct);
 
     ct.printTotalScore();
     // system("leaks ft_containers");
