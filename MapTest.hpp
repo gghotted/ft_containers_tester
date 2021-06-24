@@ -567,6 +567,10 @@ void iteratorRelationOperation(std::stringstream& out)
     m[1] = 1;
     printIteratorRelation(out, m.begin(), m.end());
     printIteratorRelation(out, m.rbegin(), m.rend());
+
+    /* check compile */
+    iter_rel_test::equal_const_nonConst<map>(out);
+    iter_rel_test::equal_reverse_constReverse<map>(out);
 }
 
 /* random case */
