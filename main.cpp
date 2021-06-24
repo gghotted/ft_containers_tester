@@ -222,14 +222,6 @@ void testMap(CompareTester& ct)
     MAP_TEST(insert_random_case1);
 }
 
-// void nonCompileCase()
-// {
-//     ft::list<int> lst;
-//     const ft::list<int> clst;
-
-//     std::cout << (lst.begin() == 1);
-// }
-
 int main()
 {
     srand(time(0));
@@ -244,5 +236,5 @@ int main()
     testMap(ct);
 
     ct.printTotalScore();
-    // system("leaks ft_containers");
+    system("leaks ft_containers");
 }
