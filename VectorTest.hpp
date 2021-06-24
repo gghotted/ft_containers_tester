@@ -4,6 +4,7 @@
 #include <sstream>
 #include <list>
 #include "Util.hpp"
+#include "IteratorRelationTest.hpp"
 
 #define VECTOR_TEST(FNC) ct.run("vector::" #FNC, "STD", "FT ", \
                                 vector_test::FNC<STD>, vector_test::FNC<FT>)
@@ -481,6 +482,13 @@ void iteratorRelationOperation(std::stringstream& out)
 
     printIteratorRelation(out, v.end(), v.begin());
     printIteratorRelation(out, v.rend(), v.rbegin());
+
+    /* check compile */
+    iter_rel_test::equal_const_nonConst<vector>(out);
+    iter_rel_test::equal_reverse_constReverse<vector>(out);
+    iter_rel_test::sizeCompaire_const_nonConst<vector>(out);
+    iter_rel_test::sizeCompaire_reverse_constReverse<vector>(out);
+    iter_rel_test::sub_const_nonConst_reverse_constReverse<vector>(out);
 }
 
 }

@@ -230,13 +230,13 @@ void testIteratorRelation(CompareTester& ct)
     ITER_REL(equal_const_nonConst);
 }
 
-void nonCompileCase()
-{
-    ft::list<int> lst;
-    const ft::list<int> clst;
+// void nonCompileCase()
+// {
+//     ft::list<int> lst;
+//     const ft::list<int> clst;
 
-    std::cout << (lst.begin() == 1);
-}
+//     std::cout << (lst.begin() == 1);
+// }
 
 int main()
 {
@@ -244,13 +244,13 @@ int main()
     CompareTester ct;
     ct.setPrintOnPass(true);
 
-    // testList(ct);
-    // testListDouble(ct);
-    // testVector(ct);
+    testList(ct);
+    testListDouble(ct);
+    testVector(ct);
     // testStack(ct);
     // testQueue(ct);
     // testMap(ct);
-    testIteratorRelation(ct);
+    // testIteratorRelation(ct);
 
     ct.printTotalScore();
     // system("leaks ft_containers");

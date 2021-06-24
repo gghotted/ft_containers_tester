@@ -11,15 +11,76 @@ namespace iter_rel_test
 {
 
 template <class Container>
-void equal_const_nonConst(std::stringstream &out)
+void equal_const_nonConst(std::stringstream& out)
 {
     Container       c;
     const Container cc;
     out << (c.begin() == cc.begin());
     out << (c.begin() != cc.begin());
+
+    out << (cc.begin() == c.begin());
+    out << (cc.begin() != c.begin());
 }
 
+template <class Container>
+void equal_reverse_constReverse(std::stringstream& out)
+{
+    Container       c;
+    const Container cc;
+    out << (c.rbegin() == cc.rbegin());
+    out << (c.rbegin() != cc.rbegin());
 
+    out << (cc.rbegin() == c.rbegin());
+    out << (cc.rbegin() != c.rbegin());
+}
+
+template <class Container>
+void sizeCompaire_const_nonConst(std::stringstream& out)
+{
+    Container       c;
+    const Container cc;
+    out << (c.begin() < cc.begin());
+    out << (c.begin() <= cc.begin());
+    out << (c.begin() > cc.begin());
+    out << (c.begin() >= cc.begin());
+
+    out << (cc.begin() < c.begin());
+    out << (cc.begin() <= c.begin());
+    out << (cc.begin() > c.begin());
+    out << (cc.begin() >= c.begin());
+}
+
+template <class Container>
+void sizeCompaire_reverse_constReverse(std::stringstream& out)
+{
+    Container       c;
+    const Container cc;
+    out << (c.rbegin() < cc.rbegin());
+    out << (c.rbegin() <= cc.rbegin());
+    out << (c.rbegin() > cc.rbegin());
+    out << (c.rbegin() >= cc.rbegin());
+
+    out << (cc.rbegin() < c.rbegin());
+    out << (cc.rbegin() <= c.rbegin());
+    out << (cc.rbegin() > c.rbegin());
+    out << (cc.rbegin() >= c.rbegin());
+}
+
+template <class Container>
+void sub_const_nonConst_reverse_constReverse(std::stringstream& out)
+{
+    Container       c;
+    const Container cc;
+
+    out << (c.begin() - c.begin());
+    out << (cc.begin() - cc.begin());
+
+    out << (c.begin() - cc.begin());
+    out << (cc.begin() - c.begin());
+
+    out << (c.rbegin() - cc.rbegin());
+    out << (cc.rbegin() - c.rbegin());
+}
 
 }
 

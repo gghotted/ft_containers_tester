@@ -3,6 +3,7 @@
 
 #include <sstream>
 #include "Util.hpp"
+#include "IteratorRelationTest.hpp"
 
 #define LIST_TEST(FNC) ct.run("list::" #FNC, "STD", "FT ", \
                               list_test::FNC<STD>, list_test::FNC<FT>)
@@ -568,6 +569,10 @@ void iteratorRelationOperation(std::stringstream& out)
     lst.assign(5, 1);
     printIteratorRelation(out, lst.begin(), lst.end());
     printIteratorRelation(out, lst.rbegin(), lst.rend());
+
+    /* check compile */
+    iter_rel_test::equal_const_nonConst<list>(out);
+    iter_rel_test::equal_reverse_constReverse<list>(out);
 }
 
 }
