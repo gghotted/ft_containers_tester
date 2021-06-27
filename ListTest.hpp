@@ -4,6 +4,7 @@
 #include <sstream>
 #include "Util.hpp"
 #include "IteratorRelationTest.hpp"
+#include "CompareTester.hpp"
 
 #define LIST_TEST(FNC) ct.run("list::" #FNC, "STD", "FT ", \
                               list_test::FNC<STD>, list_test::FNC<FT>)

@@ -1,7 +1,8 @@
 #ifndef UTIL_HPP
 #define UTIL_HPP
 
-#include "vector.hpp"
+#include <ctime>
+#include <cstdlib>
 
 const int range[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 const int nrange[] = {0, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10};

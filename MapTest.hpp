@@ -2,8 +2,10 @@
 #define MAPTEST_HPP
 
 #include <sstream>
+#include <vector>
 #include "Util.hpp"
-#include "vector.hpp"
+#include "CompareTester.hpp"
+#include "IteratorRelationTest.hpp"
 
 #define MAP_TEST(FNC) ct.run("map::" #FNC, "STD", "FT ", \
                              map_test::FNC<STD>, map_test::FNC<FT>)
@@ -577,7 +579,7 @@ void iteratorRelationOperation(std::stringstream& out)
 template <class map>
 void erase_random_case(std::stringstream& out)
 {
-    static ft::vector<int> rrange = getRandomRange<ft::vector<int> >(10);
+    static std::vector<int> rrange = getRandomRange<std::vector<int> >(10);
     map m;
     for (size_t i = 0; i < rrange.size(); i++)
         m[rrange[i]] = rrange[i];
@@ -595,7 +597,7 @@ void insert_random_case0(std::stringstream& out)
 {
     typedef typename map::value_type make_pair;
 
-    static ft::vector<int> rrange = getRandomRange<ft::vector<int> >(10);
+    static std::vector<int> rrange = getRandomRange<std::vector<int> >(10);
     map m;
     for (size_t i = 0; i < rrange.size(); i++)
     {
@@ -612,7 +614,7 @@ void insert_random_case1(std::stringstream& out)
 {
     typedef typename map::value_type make_pair;
 
-    static ft::vector<int> rrange = getRandomRange<ft::vector<int> >(10);
+    static std::vector<int> rrange = getRandomRange<std::vector<int> >(10);
     map m;
     for (size_t i = 0; i < rrange.size(); i++)
     {

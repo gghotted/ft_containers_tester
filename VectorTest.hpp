@@ -5,6 +5,7 @@
 #include <list>
 #include "Util.hpp"
 #include "IteratorRelationTest.hpp"
+#include "CompareTester.hpp"
 
 #define VECTOR_TEST(FNC) ct.run("vector::" #FNC, "STD", "FT ", \
                                 vector_test::FNC<STD>, vector_test::FNC<FT>)
